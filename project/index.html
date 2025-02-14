@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="" alt="" id="carousel" height="600">
+    <br>
+    <button id="previous">Previous image</button>
+    <button id="next">Next image</button>
+
+</body>
+
+</html>
+
+<script>
+    let currentindex = 0;
+    let images = ["https://www.bradenton.com/latest-news/v6tlfr/picture227474694/alternates/LANDSCAPE_1140/IMG_5672.jpg",
+        "https://www.ivyscholars.com/wp-content/uploads/2024/07/what_is_IMG_academy.jpg",
+        "https://www.bradenton.com/latest-news/bz5kyl/picture269631411/alternates/LANDSCAPE_1140/IMG%20bollettieri.jpg"
+    ]
+
+    function carousel() {
+        currentindex = (currentindex + 1) % images.length
+        document.getElementById("carousel").src = images[currentindex];
+    }
+
+    document.getElementById("previous").addEventListener("click", () => {
+        currentindex = (currentindex - 1 + images.length) % images.length
+        document.getElementById("carousel").src = images[currentindex];
+    });
+
+    document.getElementById("next").addEventListener("click", carousel);
+
+    setInterval(carousel, 5000);
+
+
+</script>
